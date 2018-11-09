@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #canvas{
+            margin-left: 200px;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="500"></canvas>
+</body>
+<script>
+    var canvas = document.querySelector('#canvas');
+    var ctx = canvas.getContext('2d');
+    var offsetX = 0;
+    var vx = 3;
+    // setInterval(function () {
+    //   ctx.clearRect(0,0,canvas.width,canvas.height);
+    //   ctx.beginPath();
+    //   ctx.rect(offsetX,100,50,50)
+    //   ctx.stroke()
+    //   offsetX += 1
+    // },15)
+    requestAnimationFrame(go)
+    function go() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.beginPath();
+        ctx.rect(offsetX,100,50,50)
+        ctx.stroke()
+        offsetX += vx
+      requestAnimationFrame(go)
+      if(offsetX > canvas.width-50 || offsetX < 0){
+          vx = -vx
+      }
+    }
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #canvas{
+            margin-left: 200px;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="500"></canvas>
+</body>
+<script src="./utils.js"></script>
+<script>
+    var canvas = document.querySelector('#canvas');
+    var ctx = canvas.getContext('2d');
+    var grd = ctx.createLinearGradient(0,0,800,0)
+    ctx.beginPath()
+    grd.addColorStop(0,'red')
+    grd.addColorStop(1,'yellow')
+    ctx.rect(100,100,600,100)
+    // ctx.fill()
+    // ctx.fillStyle = 'red'
+    ctx.strokeStyle = 'red'
+    ctx.fillStyle = grd
+    ctx.stroke()                                       //设置线条颜色或填充颜色要在画线和填充之前完成
+    ctx.fill()
+
+    var ctx2 = canvas.getContext('2d');
+    var grd2 = ctx2.createRadialGradient(400,400,0,400,400,100)
+    grd2.addColorStop(0,'red');
+    grd2.addColorStop(1,'yellow')
+    ctx2.beginPath();
+    ctx.arc(400,400,100,getRadian(0),getRadian(360))
+    ctx.fillStyle = grd2;
+    ctx.stroke();
+    ctx.fill();
+</script>
+</html>

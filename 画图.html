@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #canvas{
+            margin-left: 150px;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <canvas id="canvas" width="800" height="600"></canvas>
+    </div>
+</body>
+<script>
+    var canvas = document.querySelector('canvas');
+    var ctx = canvas.getContext('2d');
+
+    var img = new Image();
+    img.src = './ycy5.jpg'
+    img.setAttribute("crossOrigin",'Anonymous')  // 受限于CORS 策略，会存在跨域问题
+
+    var img2 = new Image();
+    img2.src = './WeChat.jpg'
+    img2.setAttribute("crossOrigin",'Anonymous')  // 受限于CORS 策略，会存在跨域问题
+    var newImage;
+    img.onload = function () {
+      ctx.drawImage(img,300,50,360,540);
+        console.log(11)
+        img2.onload = function () {
+          ctx.drawImage(img2,50,300,180,100);
+          newImage = canvas.toDataURL('image/jpg',0.9);
+          console.log(newImage)
+          var allImgae = new Image();
+          allImgae.src = newImage;
+          document.querySelector('.box').appendChild(allImgae)
+        }
+    }
+</script>
+</html>
